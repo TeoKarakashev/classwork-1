@@ -14,7 +14,8 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Login to DockerHub
-      run: docker login -u ${{ secrets.teokarakashev }} -p ${{ secrets.teditedited1 }}
+      run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
+
 
     - name: Build Docker Image
       run: docker build -t your-dockerhub-username/your-image-name:latest .
