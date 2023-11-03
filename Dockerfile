@@ -1,11 +1,13 @@
-# Use Ubuntu as the base image
-FROM python:3.9-alpine AS builder
-WORKDIR /app
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-COPY . .
+FROM alpine:latest
 
-FROM python:3.9-alpine
-WORKDIR /app
-COPY --from=builder /app /app
-CMD ["python", "app.py"]
+RUN apt-get update && apt-get install -y python3 python3-pip
+
+COPY ./src/app.py /app.py
+
+RUN pip3 install flask
+
+WORKDIR /
+
+EXPOSE 5000
+
+CMD ["python3", "app.py"]
