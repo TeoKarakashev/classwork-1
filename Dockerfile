@@ -1,5 +1,5 @@
 # Use Ubuntu as the base image
-FROM ubuntu
+FROM python:3.9-alpine
 
 RUN apt-get update && apt-get install -y python3 python3-pip
 
