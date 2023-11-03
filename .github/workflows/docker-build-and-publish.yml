@@ -1,0 +1,23 @@
+name: Docker Build and Publish
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Login to DockerHub
+      run: docker login -u ${{ secrets.teokarakashev }} -p ${{ secrets.teditedited1 }}
+
+    - name: Build Docker Image
+      run: docker build -t your-dockerhub-username/your-image-name:latest .
+
+    - name: Push Docker Image
+      run: docker push your-dockerhub-username/your-image-name:latest
